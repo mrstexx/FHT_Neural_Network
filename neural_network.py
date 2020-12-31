@@ -17,3 +17,9 @@ class NeuralNetwork:
 
     def backward_prop(self):
         return
+
+# NN Params to be added:
+# Layertype (wie Input, Hidden, Output, Dropout, Activation)
+# Layeranzahl, Nodes pro Layer, Aktivierungsfunktionen, Learning Rate
+# Number of iterations
+#

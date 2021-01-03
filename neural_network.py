@@ -1,5 +1,7 @@
 import numpy as np
 
+np.random.seed(0)
+
 '''
 LAYER IMPLEMENTATION
 '''
@@ -386,9 +388,7 @@ class NetModel:
         # Get predictions and calculate an accuracy
         predictions = self.output_layer_activation.predictions(output)
         accuracy = self.accuracy.calculate(predictions, y_test)
-
-        # Print accuracy
-        print('Accuracy: {0:.3f}'.format(accuracy))
+        return accuracy
 
     def train(self, x_train, y_train, *, epochs=100):
         for epoch in range(1, epochs + 1):

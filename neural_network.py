@@ -390,7 +390,7 @@ class NetModel:
         accuracy = self.accuracy.calculate(predictions, y_test)
         return accuracy
 
-    def train(self, x_train, y_train, *, epochs=100):
+    def train(self, x_train, y_train, *, epochs=100, verbose=True):
         for epoch in range(1, epochs + 1):
             # Perform the forward pass and get output of the last layer in the list
             output = self._forward(x_train)
@@ -409,12 +409,14 @@ class NetModel:
                 self.optimizer.update_params(layer)
             self.optimizer.post_update_params()
 
-            # Print result of every epoch
-            print('Epoch: {0}/{1}, acc: {2:.3f}, data_loss: {3:.3f}, lr:{4}'.format(epoch,
-                                                                                    epochs,
-                                                                                    accuracy,
-                                                                                    data_loss,
-                                                                                    self.optimizer.current_learning_rate))
+            if verbose is True:
+                # Print result of every epoch
+                print('Epoch: {0}/{1}, acc: {2:.3f}, data_loss: {3:.3f}, lr:{4}'
+                      .format(epoch,
+                              epochs,
+                              accuracy,
+                              data_loss,
+                              self.optimizer.current_learning_rate))
 
     def compile(self):
         # Create and set the input layer
